@@ -2,7 +2,7 @@ module.exports = {
   pathPrefix: `/`, // Change to `/running_page` when running on github pages
   siteMetadata: {
     siteTitle: 'Running Page',
-    siteUrl: 'https://yihong.run',
+    siteUrl: 'https://github.com/danyuewang/running_page',
     logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTtc69JxHNcmN1ETpMUX4dozAgAN6iPjWalQ&usqp=CAU',
     description: 'Personal site and blog',
     navLinks: [
@@ -17,7 +17,7 @@ module.exports = {
     ],
   },
   plugins: [
-    'gatsby-transformer-json',
+    'gatsby-transformer-json',b
     {
       resolve: 'gatsby-source-filesystem',
       options: {
