@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://github.com/danyuewang/sitemap/sitemap-index.xml
+Sitemap: https://github.com/running_page/sitemap/sitemap-index.xml
 Host: https://github.com
