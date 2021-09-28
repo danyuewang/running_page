@@ -173,7 +173,7 @@ export default () => {
           </h1>
         </div>
         {viewport.zoom <= 3 && IS_CHINESE ? (
-          <LocationStat
+          <Location
             changeYear={changeYear}
             changeCity={changeCity}
             changeTitle={changeTitle}
