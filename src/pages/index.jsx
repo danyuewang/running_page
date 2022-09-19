@@ -20,7 +20,7 @@ import {
   titleForShow,
 } from 'src/utils/utils';
 
-export default () => {
+const Index = () => {
   const { siteTitle } = useSiteMetadata();
   const { activities, thisYear } = useActivities();
   const [year, setYear] = useState(thisYear);
@@ -40,14 +40,19 @@ export default () => {
     ...bounds,
   });
 
-  const changeByItem = (item, name, func) => {
+  const changeByItem = (item, name, func, isChanged) => {
     scrollToMap();
     setActivity(filterAndSortRuns(activities, item, func, sortDateFunc));
-    setTitle(`${item} ${name} Running Heatmap`);
-    setRunIndex(-1);
+    // if the year not change, we do not need to setYear
+    if (!isChanged) {
+      setRunIndex(-1);
+      setTitle(`${item} ${name} Running Heatmap`);
+    }
   };
 
   const changeYear = (y) => {
+
+    const isChanged = y === year;
     // default year
     setYear(y);
 
@@ -59,16 +64,16 @@ export default () => {
       });
     }
 
-    changeByItem(y, 'Year', filterYearRuns);
+    changeByItem(y, 'Year', filterYearRuns, isChanged);
     clearInterval(intervalId);
   };
 
   const changeCity = (city) => {
-    changeByItem(city, 'City', filterCityRuns);
+    changeByItem(city, 'City', filterCityRuns, false);
   };
 
   const changeTitle = (title) => {
-    changeByItem(title, 'Title', filterTitleRuns);
+    changeByItem(title, 'Title', filterTitleRuns, false);
   };
 
   const locateActivity = (run) => {
@@ -101,7 +106,7 @@ export default () => {
       i += sliceNume;
     }, 100);
     setIntervalId(id);
-  }, [year]);
+  }, [runs]);
 
   // TODO refactor
   useEffect(() => {
@@ -209,3 +214,5 @@ export default () => {
     </Layout>
   );
 };
+
+export default Index;
