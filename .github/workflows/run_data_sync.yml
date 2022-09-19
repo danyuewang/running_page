@@ -19,7 +19,7 @@ on:
 
 env:
   # please change to your own config.
-  RUN_TYPE: only_gpx # support strava/nike/garmin/garmin_cn/keep/only_gpx/nike_to_strava, Please change the 'pass' it to your own
+  RUN_TYPE: pass # support strava/nike/garmin/garmin_cn/keep/only_gpx/nike_to_strava, Please change the 'pass' it to your own
   ATHLETE: danyue
   TITLE: Danyue Running
   TITLE_GRID: Over 5km Runs
@@ -54,6 +54,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+          git config --global --add safe.directory /github/workspace
         if: steps.pip-cache.outputs.cache-hit != 'true'
 
       - name: Run sync Nike script
